@@ -22,9 +22,8 @@ class Database:
             Database.initialise()
         return Database.__connection_pool.get_connection()
 
-    @staticmethod
-    def return_connection(connection):
-        Database.__connection_pool.putconn(connection)
+    # No need for return_connection method in mysql-connector-python
+    # Connections are automatically returned to the pool when they are closed
 
     @staticmethod
     def close_all_connections():
