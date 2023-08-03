@@ -18,6 +18,8 @@ class Database:
 
     @staticmethod
     def get_connection():
+        if Database.__connection_pool is None:
+            Database.initialise()
         return Database.__connection_pool.getconn()
 
     @staticmethod
