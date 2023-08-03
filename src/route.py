@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from src.dtos.ISayHelloDto import ISayHelloDto
 from src.controllers.PersonController import PersonController
 from src.dtos.PersonDto import PersonDto
 
@@ -9,14 +8,6 @@ person_controller = PersonController()
 @router.get("/")
 async def root():
     return {"message": "Hello World"}
-
-@router.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
-
-@router.post("/hello")
-async def hello_message(dto: ISayHelloDto):
-    return {"message": f"Hello {dto.message}"}
 
 @router.post("/person")
 async def create_person(person_dto: PersonDto):
