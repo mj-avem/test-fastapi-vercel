@@ -1,5 +1,4 @@
 from src.database import Database
-import psycopg2.extras
 from src.models.RecenseadorModel import RecenseadorModel
 
 class RecenseadorRepository:

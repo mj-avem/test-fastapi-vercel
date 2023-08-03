@@ -1,6 +1,5 @@
 import pytest
 
-from src.dtos.ISayHelloDto import ISayHelloDto
 from src.repositories.RecenseadorRepository import RecenseadorRepository
 
 
