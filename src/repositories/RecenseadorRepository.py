@@ -8,7 +8,7 @@ class RecenseadorRepository:
 
     def create_recenseador(self, recenseador_dto):
         connection = Database.get_connection()
-        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor = connection.cursor()
         cursor.execute('INSERT INTO recenseadores (nome, usuario, senha, email, data_nascimento, ativo) VALUES (%s, %s, %s, %s, %s, %s)',
                        (recenseador_dto.nome, recenseador_dto.usuario, recenseador_dto.senha, recenseador_dto.email, recenseador_dto.data_nascimento, recenseador_dto.ativo))
         connection.commit()
@@ -16,7 +16,7 @@ class RecenseadorRepository:
 
     def get_recenseador(self, recenseador_id):
         connection = Database.get_connection()
-        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor = connection.cursor()
         cursor.execute('SELECT * FROM recenseadores WHERE id = %s', (recenseador_id,))
         recenseador = cursor.fetchone()
         Database.return_connection(connection)
@@ -24,7 +24,7 @@ class RecenseadorRepository:
 
     def update_recenseador(self, recenseador_id, recenseador_dto):
         connection = Database.get_connection()
-        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor = connection.cursor()
         cursor.execute('UPDATE recenseadores SET nome = %s, usuario = %s, senha = %s, email = %s, data_nascimento = %s, ativo = %s WHERE id = %s',
                        (recenseador_dto.nome, recenseador_dto.usuario, recenseador_dto.senha, recenseador_dto.email, recenseador_dto.data_nascimento, recenseador_dto.ativo, recenseador_id))
         connection.commit()
@@ -32,14 +32,14 @@ class RecenseadorRepository:
 
     def delete_recenseador(self, recenseador_id):
         connection = Database.get_connection()
-        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor = connection.cursor()
         cursor.execute('DELETE FROM recenseadores WHERE id = %s', (recenseador_id,))
         connection.commit()
         Database.return_connection(connection)
 
     def list_recenseadores(self):
         connection = Database.get_connection()
-        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor = connection.cursor()
         cursor.execute('SELECT * FROM recenseadores')
         recenseadores = cursor.fetchall()
         Database.return_connection(connection)
