@@ -25,6 +25,6 @@ async def update_recenseador(recenseador_id: int, recenseador_dto: RecenseadorDt
 async def delete_recenseador(recenseador_id: int):
     return recenseador_controller.delete_recenseador(recenseador_id)
 
-@router.get("/recenseadors")
-async def list_recenseadors():
-    return recenseador_controller.list_recenseadors()
+@router.get("/recenseadores")
+async def list_recenseadores():
+    return recenseador_controller.list_recenseadores()

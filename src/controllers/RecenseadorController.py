@@ -1,9 +1,9 @@
-from src.services.RecenseadorService import RecenseadorService
+from src.services.RecenseadorService import recenseadoreservice
 from src.dtos.RecenseadorDto import RecenseadorDto
 
 class RecenseadorController:
     def __init__(self):
-        self.recenseador_service = RecenseadorService()
+        self.recenseador_service = recenseadoreservice()
 
     def create_recenseador(self, recenseador_dto: RecenseadorDto):
         return self.recenseador_service.create_recenseador(recenseador_dto)
@@ -16,3 +16,6 @@ class RecenseadorController:
 
     def delete_recenseador(self, recenseador_id: int):
         return self.recenseador_service.delete_recenseador(recenseador_id)
+
+    def list_recenseadores(self):
+        return self.recenseador_service.list_recenseadores()

@@ -1,7 +1,7 @@
 from src.repositories.RecenseadorRepository import RecenseadorRepository
 from src.dtos.RecenseadorDto import RecenseadorDto
 
-class RecenseadorService:
+class recenseadoreservice:
     def __init__(self):
         self.recenseador_repository = RecenseadorRepository()
 
@@ -17,5 +17,5 @@ class RecenseadorService:
     def delete_recenseador(self, recenseador_id: int):
         return self.recenseador_repository.delete_recenseador(recenseador_id)
 
-    def list_recenseadors(self):
-        return self.recenseador_repository.list_recenseadors()
+    def list_recenseadores(self):
+        return self.recenseador_repository.list_recenseadores()
