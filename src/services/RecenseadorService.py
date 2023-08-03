@@ -16,3 +16,6 @@ class RecenseadorService:
 
     def delete_recenseador(self, recenseador_id: int):
         return self.recenseador_repository.delete_recenseador(recenseador_id)
+
+    def list_recenseadors(self):
+        return self.recenseador_repository.list_recenseadors()

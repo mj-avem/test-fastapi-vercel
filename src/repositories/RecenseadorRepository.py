@@ -33,6 +33,14 @@ class RecenseadorRepository:
     def delete_recenseador(self, recenseador_id):
         connection = Database.get_connection()
         cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        cursor.execute('DELETE FROM recenseadores WHERE id = %s', (recenseador_id,))
+        cursor.execute('DELETE FROM recenseadors WHERE id = %s', (recenseador_id,))
         connection.commit()
         Database.return_connection(connection)
+
+    def list_recenseadors(self):
+        connection = Database.get_connection()
+        cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor.execute('SELECT * FROM recenseadors')
+        recenseadors = cursor.fetchall()
+        Database.return_connection(connection)
+        return recenseadors
