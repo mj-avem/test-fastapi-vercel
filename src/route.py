@@ -28,3 +28,7 @@ async def delete_recenseador(recenseador_id: int):
 @router.get("/recenseadores")
 async def list_recenseadores():
     return recenseador_controller.list_recenseadores()
+
+@router.get("/health")
+async def health_check():
+    return {"status": "Service is running"}
