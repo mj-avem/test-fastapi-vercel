@@ -2,9 +2,6 @@ from src.database import Database
 from src.models.RecenseadorModel import RecenseadorModel
 
 class RecenseadorRepository:
-    def __init__(self):
-        pass
-
     def create_recenseador(self, recenseador_dto):
         connection = Database.get_connection()
         cursor = connection.cursor()
