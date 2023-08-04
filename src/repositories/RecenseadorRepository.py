@@ -7,8 +7,12 @@ class RecenseadorRepository:
         cursor = connection.cursor()
         cursor.execute('INSERT INTO recenseadores (nome, usuario, senha, email, data_nascimento, ativo) VALUES (%s, %s, %s, %s, %s, %s)',
                        (recenseador_dto.nome, recenseador_dto.usuario, recenseador_dto.senha, recenseador_dto.email, recenseador_dto.data_nascimento, recenseador_dto.ativo))
+        recenseador_id = cursor.lastrowid
         connection.commit()
+        cursor.execute('SELECT * FROM recenseadores WHERE id = %s', (recenseador_id,))
+        recenseador = cursor.fetchone()
         connection.close()
+        return recenseador
 
     def get_recenseador(self, recenseador_id):
         connection = Database.get_connection()
